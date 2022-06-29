@@ -80,18 +80,14 @@ public class CourseService {
         
         //finding subjects for courses 
         for(int code: codesSubject){
-            if(subjectRepository.findByCode(code) != null) subjects.add(subjectRepository.findByCode(code)); 
+            Subject subject = subjectRepository.findByCode(code);
+            if(subject != null) subjects.add(subject); 
         }
 
         //finding students for courses
         for(String email: emailsStudent){
-            if (
-                usersRepository.findByEmailAndRoleAndState(email, role, true) != null
-            ) {
-                students.add(
-                    usersRepository.findByEmailAndRoleAndState(email, role, true)
-                );
-            }  
+            Users user = usersRepository.findByEmailAndRoleAndState(email, role, true);
+            if (user != null) students.add(user);
         }
 
         //find academy for courses

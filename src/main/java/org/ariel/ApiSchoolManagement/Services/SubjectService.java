@@ -43,7 +43,7 @@ public class SubjectService {
     public boolean save(Subject subject, String emailTeacher){
         roleTeacher = rollRepository.findByName("TEACHER");
         Users teacher = userRepository.findByEmailAndRoleAndState(emailTeacher, roleTeacher, true);
-
+        
         if(
             teacher == null ||
             subjectRepository.existsByCodeAndState(subject.getCode(), true) || 
